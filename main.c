@@ -7,19 +7,32 @@ void dec_to_bin_recursive(int dec) {
   printf("%d", dec % 2);
 }
 
-void rec(int a) {
+int power(int a, int b) {
+  int result = 1;
 
-  if (a > 0) {
-      rec(a - 1);
+  for (int i = 0; i < b; i++) {
+      result = result * a;
     }
-  printf("%3d", a);
 
+  return result;
+}
+
+int power_recoursive(int a, int b) {
+  if (b == 0) {
+      return 1;
+    }
+  if (b > 1) {
+      b--;
+      a = a * power_recoursive(a, b);
+    }
+
+  return a;
 }
 
 int main()
 {
   dec_to_bin_recursive(6);
-//  rec(10);
-  printf("\n");
+
+  printf("\n%3d\n", power_recoursive(2, 8));
   return 0;
 }
